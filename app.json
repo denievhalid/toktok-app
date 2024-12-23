@@ -19,6 +19,14 @@
         }
       ],
       [
+        "expo-splash-screen",
+        {
+          "image": "./src/assets/images/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ],
+      [
         "expo-font",
         {
           "fonts": [
@@ -37,6 +45,9 @@
       "eas": {
         "projectId": "98214b15-0f3d-4908-ac74-89a50dc1f672"
       }
+    },
+    "android": {
+      "package": "com.khaliddeniev.toktok"
     }
   }
 }

@@ -23,7 +23,7 @@ export const OnboardingSlider = () => {
   }, []);
 
   const handleOnboardingDone = () => {
-    router.replace("/home");
+    router.replace("/signup");
   };
 
   return (

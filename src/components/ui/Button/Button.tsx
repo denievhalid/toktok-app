@@ -2,10 +2,12 @@ import { Pressable, Text, TouchableOpacity } from "react-native";
 import { buttonClasses, textClasses } from "./Button.constants";
 import type { ButtonProps } from "./Button.types";
 import { isValidElement } from "react";
+import { IconLoading } from "@/components/icons";
 
 export const Button = ({
   children,
   className,
+  isLoading,
   onPress,
   rounded,
   startIcon,
@@ -18,8 +20,14 @@ export const Button = ({
       className={buttonClasses({ className, rounded, size, type })}
       onPress={onPress}
     >
-      {isValidElement(startIcon) && startIcon}
-      <Text className={textClasses({ type })}>{children}</Text>
+      {isLoading ? (
+        <IconLoading />
+      ) : (
+        <>
+          {isValidElement(startIcon) && startIcon}
+          <Text className={textClasses({ type })}>{children}</Text>
+        </>
+      )}
     </TouchableOpacity>
   );
 };

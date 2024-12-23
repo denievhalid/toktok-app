@@ -1,5 +1,11 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { View } from "react-native";
+import {
+  Keyboard,
+  Pressable,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 import { safeAreaClasses } from "./SafeArea.constants";
 import type { SafeAreaProps } from "./SafeArea.types";
 

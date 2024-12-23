@@ -5,12 +5,11 @@ import { SplashScreen, Stack } from "expo-router";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import { Fonts } from "@/constants";
+import "../global.css";
+import { isIOSPlatform } from "@/utils";
+import { KeyboardAvoidingView } from "react-native";
 
 const queryClient = new QueryClient();
-
-import "../global.css";
-
-SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -22,7 +21,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (loaded || error) {
-      SplashScreen.hideAsync();
+      //SplashScreen.hideAsync();
     }
   }, [loaded, error]);
 
@@ -33,18 +32,23 @@ export default function RootLayout() {
   return (
     <GestureHandlerRootView className="flex-1">
       <QueryClientProvider client={queryClient}>
-        <PortalProvider>
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="(tabs)" />
-            <Stack.Screen name="(calls)" />
-            <Stack.Screen
-              name="story"
-              options={{
-                presentation: "containedModal",
-              }}
-            />
-          </Stack>
-        </PortalProvider>
+        <KeyboardAvoidingView
+          behavior={isIOSPlatform() ? "padding" : undefined}
+          className="flex-1"
+        >
+          <PortalProvider>
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="(tabs)" />
+              <Stack.Screen name="(calls)" />
+              <Stack.Screen
+                name="story"
+                options={{
+                  presentation: "containedModal",
+                }}
+              />
+            </Stack>
+          </PortalProvider>
+        </KeyboardAvoidingView>
       </QueryClientProvider>
     </GestureHandlerRootView>
   );

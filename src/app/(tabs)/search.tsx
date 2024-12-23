@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { Input } from "@/components/ui/Input/Input";
 import { SafeArea } from "@/components/SafeArea/SafeArea";
+import { TagList } from "@/features/Tag/components/TagList/TagList";
 
 export default function SearchPage() {
   return (
@@ -17,30 +18,7 @@ export default function SearchPage() {
           <View className="px-6">
             <Input />
           </View>
-          <FlatList
-            data={[
-              { id: "1", title: "Trending" },
-              { id: "2", title: "Discover" },
-              { id: "3", title: "Posts" },
-              { id: "4", title: "Shorts" },
-            ]}
-            keyExtractor={({ id }) => id}
-            horizontal
-            contentContainerStyle={{
-              gap: 12,
-              paddingHorizontal: 24,
-            }}
-            showsHorizontalScrollIndicator={false}
-            renderItem={({ item: { title }, index }) => (
-              <Pressable className="items-center gap-2">
-                <View className="h-[38px] border-2 border-[#FF4D67] rounded-[100] items-center justify-center px-5">
-                  <Text className="font-urbanist-semibold text-base text-primary-500">
-                    {title}
-                  </Text>
-                </View>
-              </Pressable>
-            )}
-          />
+          <TagList />
           <FlatList
             data={[
               { id: "1" },
