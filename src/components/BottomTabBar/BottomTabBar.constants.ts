@@ -13,7 +13,7 @@ import { Fonts } from "@/constants";
 
 export const bottomTabs = [
   {
-    name: "index",
+    name: "home",
     title: "Home",
     icon: IconHome,
     activeIcon: IconHomeFilled,

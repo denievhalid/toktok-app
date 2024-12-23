@@ -1,30 +1,30 @@
 import Swiper from "react-native-swiper";
 import { Image, Text, View } from "react-native";
 import { slides } from "./OnboardingSlider.constants";
-import {Button} from "@/components/ui/Button/Button";
-import {useRouter} from "expo-router";
-import {useCallback, useEffect, useRef, useState} from "react";
+import { Button } from "@/components/ui/Button/Button";
+import { useRouter } from "expo-router";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export const OnboardingSlider = () => {
-  const ref = useRef<Swiper>()
-  const [slide, setSlide] = useState(0)
+  const ref = useRef<Swiper>();
+  const [slide, setSlide] = useState(0);
   const router = useRouter();
 
   useEffect(() => {
     if (slide === 3) {
-      handleOnboardingDone()
+      handleOnboardingDone();
     } else {
-      ref.current?.scrollTo(slide, true)
+      ref.current?.scrollTo(slide, true);
     }
   }, [slide]);
 
   const handleNextSlide = useCallback(() => {
-    setSlide(prev => ++prev)
-  }, [])
+    setSlide((prev) => ++prev);
+  }, []);
 
   const handleOnboardingDone = () => {
-    router.replace("/(tabs)")
-  }
+    router.replace("/home");
+  };
 
   return (
     <>
@@ -44,10 +44,7 @@ export const OnboardingSlider = () => {
             key={index}
             className="gap-5 px-6 items-center justify-center pt-auto flex-1"
           >
-            <Image
-              className="max-w-max"
-              source={image}
-            />
+            <Image className="max-w-max" source={image} />
             <Text className="font-urbanist-bold text-3xl text-center">
               {title}
             </Text>
@@ -56,19 +53,20 @@ export const OnboardingSlider = () => {
             </Text>
           </View>
         ))}
-      </Swiper><View className="gap-3 px-6">
-      <Button onPress={handleNextSlide} rounded="lg" size="lg" type="primary">
-        Next
-      </Button>
-      <Button
-        onPress={handleOnboardingDone}
-        rounded="lg"
-        size="lg"
-        type="secondary"
-      >
-        Skip
-      </Button>
-    </View>
+      </Swiper>
+      <View className="gap-3 px-6">
+        <Button onPress={handleNextSlide} rounded="lg" size="lg" type="primary">
+          Next
+        </Button>
+        <Button
+          onPress={handleOnboardingDone}
+          rounded="lg"
+          size="lg"
+          type="secondary"
+        >
+          Skip
+        </Button>
+      </View>
     </>
   );
 };

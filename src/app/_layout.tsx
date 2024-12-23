@@ -1,15 +1,12 @@
 import { useEffect } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PortalProvider } from "@gorhom/portal";
 import { SplashScreen, Stack } from "expo-router";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import { Fonts } from "@/constants";
-import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  "https://fwgvkzpuuzgtdndmaabx.supabase.co",
-  "sbp_6032d7c77a80aae2210d2b88a2d4da292e472958",
-);
+const queryClient = new QueryClient();
 
 import "../global.css";
 
@@ -35,18 +32,20 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView className="flex-1">
-      <PortalProvider>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(tabs)" />
-          <Stack.Screen name="(calls)" />
-          <Stack.Screen
-            name="story"
-            options={{
-              presentation: "containedModal",
-            }}
-          />
-        </Stack>
-      </PortalProvider>
+      <QueryClientProvider client={queryClient}>
+        <PortalProvider>
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="(tabs)" />
+            <Stack.Screen name="(calls)" />
+            <Stack.Screen
+              name="story"
+              options={{
+                presentation: "containedModal",
+              }}
+            />
+          </Stack>
+        </PortalProvider>
+      </QueryClientProvider>
     </GestureHandlerRootView>
   );
 }
