@@ -13,14 +13,14 @@ export const OnboardingSlider = () => {
         <View className="w-[6px] aspect-square bg-primary-500 rounded-full mx-[6px]" />
       }
     >
-      {slides.map(({ description, title }, index) => (
+      {slides.map(({ description, image, title }, index) => (
         <View
           key={index}
-          className="gap-5 px-6 items-center pt-auto flex-1 pb-20"
+          className="gap-5 px-6 items-center justify-center pt-auto flex-1"
         >
           <Image
-            className="max-w-max my-auto"
-            source={require("@/assets/images/onboarding-slide-3.png")}
+            className="max-w-max"
+            source={image}
           />
           <Text className="font-urbanist-bold text-3xl text-center">
             {title}
