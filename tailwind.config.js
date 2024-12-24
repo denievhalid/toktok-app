@@ -17,6 +17,7 @@ module.exports = {
         "greyscale-300": "#E0E0E0",
         "greyscale-500": "#9E9E9E",
         "greyscale-700": "#616161",
+        "greyscale-900": "#212121",
         "dark-10": "#1A1B22",
         "dark-20": "#23252F",
         "dark-30": "#2A2B39",
